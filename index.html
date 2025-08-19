@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Brew</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            --espresso: #4B2B1E;
+            --latte: #E3D5C6;
+            --cream: #F5F0EB;
+            --copper: #B87333;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--espresso);
+            transition: all 0.3s ease;
+        }
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            background-color: rgba(75, 43, 30, 0.1);
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background-color: var(--copper);
+            transition: width 0.5s ease;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        .dark-mode .card-dark {
+            background-color: #1E1E1E;
+            color: #FFFFFF;
+        }
+        .dark-mode .card-shadow {
+            background-color: #1E1E1E;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- App Header -->
+    <header class="bg-[#4B2B1E] text-[#F5F0EB] p-4 flex justify-between items-center">
+        <h1 class="text-xl font-semibold">Café Matinal</h1>
+        <div class="flex items-center space-x-3">
+            <button id="themeToggle" class="p-1 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+            <button id="langToggle" class="text-sm font-medium">EN/PT</button>
+        </div>
+    </header>
+
+    <!-- Main App Content -->
+    <main class="flex-1 p-4 max-w-md mx-auto w-full">
+        <!-- Motivational Quote Card -->
+        <section class="mb-6">
+            <div class="bg-white rounded-2xl p-6 card-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-[#E3D5C6] flex items-center justify-center mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#4B2B1E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-lg font-semibold">Café de Hoje</h2>
+                </div>
+                <p class="serif text-xl italic mb-4" id="quoteText">"O segredo para avançar é começar."</p>
+                <p class="text-right text-sm text-[#B87333]" id="quoteAuthor">— Mark Twain</p>
+            </div>
+        </section>
+
+        <!-- Streak Counter -->
+        <section class="mb-6">
+            <div class="bg-[#4B2B1E] rounded-2xl p-4 text-[#F5F0EB]">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-medium">Sequência Matinal</h3>
+                        <p class="text-sm opacity-80">Sem redes sociais antes do meio-dia</p>
+                    </div>
+                    <div class="text-3xl font-bold">7</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Routine Checklist -->
+        <section class="mb-6">
+            <div class="bg-white rounded-2xl p-6 card-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-[#E3D5C6] flex items-center justify-center mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#4B2B1E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <h2 class="text-lg font-semibold">Rotina Matinal</h2>
+                </div>
+                
+                <div class="progress-bar mb-4">
+                    <div class="progress-fill" style="width: 25%"></div>
+                </div>
+                
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <input type="checkbox" id="task1" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                        <label for="task1" class="ml-3">Beber um copo d'água</label>
+                    </li>
+                    <li class="flex items-center">
+                        <input type="checkbox" id="task2" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                        <label for="task2" class="ml-3">Alongamento de 5 minutos</label>
+                    </li>
+                    <li class="flex items-center">
+                        <input type="checkbox" id="task3" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                        <label for="task3" class="ml-3">Escrever no diário por 5 minutos</label>
+                    </li>
+                    <li class="flex items-center">
+                        <input type="checkbox" id="task4" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                        <label for="task4" class="ml-3">Ler 10 páginas</label>
+                    </li>
+                </ul>
+                
+                <button class="mt-4 w-full py-2 bg-[#B87333] text-white rounded-full font-medium">Iniciar Rotina Guiada</button>
+            </div>
+        </section>
+
+        <!-- Daily Planner -->
+        <section>
+            <div class="bg-white rounded-2xl p-6 card-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-[#E3D5C6] flex items-center justify-center mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#4B2B1E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-lg font-semibold">Planejamento Diário</h2>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-medium text-[#B87333] mb-2">Manhã</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <input type="checkbox" id="morningTask1" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                            <label for="morningTask1" class="ml-3">Revisar metas diárias</label>
+                        </li>
+                        <li class="flex items-center">
+                            <input type="checkbox" id="morningTask2" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                            <label for="morningTask2" class="ml-3">Reunião de equipe às 10:00</label>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-medium text-[#B87333] mb-2">Tarde</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <input type="checkbox" id="afternoonTask1" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                            <label for="afternoonTask1" class="ml-3">Trabalhar na proposta do projeto</label>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-medium text-[#B87333] mb-2">Noite</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <input type="checkbox" id="eveningTask1" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                            <label for="eveningTask1" class="ml-3">Planejar agenda de amanhã</label>
+                        </li>
+                        <li class="flex items-center">
+                            <input type="checkbox" id="eveningTask2" class="rounded-full h-5 w-5 border-[#4B2B1E] text-[#B87333] focus:ring-[#B87333]">
+                            <label for="eveningTask2" class="ml-3">Ler antes de dormir</label>
+                        </li>
+                    </ul>
+                </div>
+                
+                <button class="mt-4 w-full py-2 border border-[#B87333] text-[#B87333] rounded-full font-medium flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Adicionar Tarefa
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bg-white border-t border-gray-200 p-2">
+        <div class="flex justify-around max-w-md mx-auto">
+            <button id="navHome" class="p-2 text-[#B87333]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+            </button>
+            <button id="navRoutine" class="p-2 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+            </button>
+            <button id="navCalendar" class="p-2 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </button>
+            <button id="navSettings" class="p-2 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Save preference to localStorage
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            // Update icon
+            const icon = themeToggle.querySelector('svg');
+            if (isDark) {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
+            } else {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />';
+            }
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            const icon = themeToggle.querySelector('svg');
+            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
+        }
+        
+        // Language toggle functionality
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'en';
+        
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'pt' : 'en';
+            langToggle.textContent = currentLang === 'en' ? 'PT/EN' : 'EN/PT';
+            
+            // In a real app, we would update all text content here
+            if (currentLang === 'pt') {
+                document.querySelector('h1').textContent = 'Café Matinal';
+                document.querySelector('#quoteText').textContent = '"O segredo para avançar é começar."';
+                document.querySelector('#quoteAuthor').textContent = '— Mark Twain';
+                // Would update all other text elements similarly
+            } else {
+                document.querySelector('h1').textContent = 'Morning Brew';
+                document.querySelector('#quoteText').textContent = '"The secret of getting ahead is getting started."';
+                document.querySelector('#quoteAuthor').textContent = '— Mark Twain';
+            }
+        });
+        
+        // Update progress bar as tasks are checked
+        const routineCheckboxes = document.querySelectorAll('#task1, #task2, #task3, #task4');
+        const progressFill = document.querySelector('.progress-fill');
+        
+        routineCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateProgress);
+        });
+        
+        function updateProgress() {
+            const checkedCount = Array.from(routineCheckboxes).filter(cb => cb.checked).length;
+            const progress = (checkedCount / routineCheckboxes.length) * 100;
+            progressFill.style.width = `${progress}%`;
+        }
+        
+        // Simulate notification permission request
+        if (!localStorage.getItem('notificationRequested')) {
+            setTimeout(() => {
+                if (confirm('Café Matinal gostaria de enviar notificações diárias para começar sua manhã produtiva. Permitir notificações?')) {
+                    alert('Notifications enabled! You\'ll receive your first message tomorrow morning.');
+                }
+                localStorage.setItem('notificationRequested', 'true');
+            }, 3000);
+        }
+
+        // Navigation functionality
+        const navButtons = {
+            navHome: document.getElementById('navHome'),
+            navRoutine: document.getElementById('navRoutine'),
+            navCalendar: document.getElementById('navCalendar'),
+            navSettings: document.getElementById('navSettings')
+        };
+
+        function setActiveNav(activeId) {
+            Object.keys(navButtons).forEach(id => {
+                const btn = navButtons[id];
+                if (id === activeId) {
+                    btn.classList.remove('text-gray-400');
+                    btn.classList.add('text-[#B87333]');
+                } else {
+                    btn.classList.remove('text-[#B87333]');
+                    btn.classList.add('text-gray-400');
+                }
+            });
+        }
+
+        // Add click handlers for navigation
+        navButtons.navHome.addEventListener('click', () => {
+            setActiveNav('navHome');
+            alert('Navegando para a página inicial');
+        });
+
+        navButtons.navRoutine.addEventListener('click', () => {
+            setActiveNav('navRoutine');
+            alert('Navegando para rotinas');
+        });
+
+        navButtons.navCalendar.addEventListener('click', () => {
+            setActiveNav('navCalendar');
+            alert('Navegando para calendário');
+        });
+
+        navButtons.navSettings.addEventListener('click', () => {
+            setActiveNav('navSettings');
+            alert('Navegando para configurações');
+        });
+
+        // Make guided routine button functional
+        document.querySelector('button[class*="bg-[#B87333]"]').addEventListener('click', () => {
+            alert('Iniciando rotina guiada passo a passo');
+        });
+
+        // Make add task button functional
+        document.querySelector('button[class*="border-[#B87333]"]').addEventListener('click', () => {
+            const taskName = prompt('Digite o nome da nova tarefa:');
+            if (taskName) {
+                alert(`Tarefa "${taskName}" adicionada com sucesso!`);
+            }
+        });
+    </script>
+</body>
+</html>
