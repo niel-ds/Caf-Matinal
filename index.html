@@ -20,16 +20,11 @@
     .dark-mode .card{background:#1E1E1E;box-shadow:0 6px 28px rgba(255,255,255,.06)}
     .progress{height:8px;border-radius:999px;background:rgba(0,0,0,.08)}
     .progress > span{display:block;height:100%;border-radius:inherit;background:var(--copper);transition:width .35s ease}
-    /* Tipografia responsiva */
     .title-xl{font-size:clamp(1.1rem, 1rem + 1vw, 1.35rem)}
     .quote-lg{font-size:clamp(1.15rem, 1rem + 1.2vw, 1.5rem);line-height:1.35}
-    /* Área de toque amigável */
     .tappable{min-height:44px;min-width:44px}
-    /* Focos visíveis */
     .focus-ring:focus-visible{outline:2px solid var(--copper);outline-offset:3px;border-radius:.75rem}
-    /* Nav fixa com recorte seguro */
     .safe-bottom{padding-bottom:env(safe-area-inset-bottom, 0)}
-    /* Ícones */
     .icon{width:24px;height:24px;stroke:currentColor;stroke-width:1.75;fill:none}
   </style>
 </head>
@@ -83,7 +78,7 @@
           </div>
           <h2 class="title-xl font-semibold">Rotina Matinal</h2>
         </div>
-        <button id="addMorningTask" class="tappable focus-ring btn-outline px-3 py-2 rounded text-[color:var(--copper)] border-2 border-[color:var(--copper)]">+ Item</button>
+        <button id="addMorningTask" class="tappable focus-ring px-3 py-2 rounded text-[color:var(--copper)] border-2 border-[color:var(--copper)]">+ Item</button>
       </div>
 
       <div class="progress mb-4"><span id="routineProgress" style="width:0%"></span></div>
@@ -106,21 +101,21 @@
             <h3 class="font-semibold text-[color:var(--copper)]">Manhã</h3>
             <button data-add="morning" class="tappable focus-ring px-3 py-1.5 rounded border-2 border-[color:var(--copper)] text-[color:var(--copper)]">+Adicionar</button>
           </div>
-          <ul id="planMorning" class="space-y-2"></ul>
+          <ul id="planMorning" class="space-y-2" data-period="morning"></ul>
         </div>
         <div>
           <div class="flex items-center justify-between mb-2">
             <h3 class="font-semibold text-[color:var(--copper)]">Tarde</h3>
             <button data-add="afternoon" class="tappable focus-ring px-3 py-1.5 rounded border-2 border-[color:var(--copper)] text-[color:var(--copper)]">+Adicionar</button>
           </div>
-          <ul id="planAfternoon" class="space-y-2"></ul>
+          <ul id="planAfternoon" class="space-y-2" data-period="afternoon"></ul>
         </div>
         <div>
           <div class="flex items-center justify-between mb-2">
             <h3 class="font-semibold text-[color:var(--copper)]">Noite</h3>
             <button data-add="evening" class="tappable focus-ring px-3 py-1.5 rounded border-2 border-[color:var(--copper)] text-[color:var(--copper)]">+Adicionar</button>
           </div>
-          <ul id="planEvening" class="space-y-2"></ul>
+          <ul id="planEvening" class="space-y-2" data-period="evening"></ul>
         </div>
       </div>
     </section>
@@ -203,19 +198,19 @@
         <svg class="icon" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 6h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/></svg>
       </button>
       <button id="navSettings" class="tappable focus-ring p-2 rounded text-gray-400" title="Configurações">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.33 1.82 2 2 0 1 1-3.34 0A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82-.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-.6-1 1.65 1.65 0 0 0-1.82-.33 2 2 0 1 1 0-3.34A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0 .33-1.82l-.06-.06A2 2 0 1 1 7.7 4.3l.06.06A1.65 1.65 0 0 0 9 4.6c.38 0 .74-.13 1-.36a1.65 1.65 0 0 0 .33-1.82 2 2 0 1 1 3.34 0c.15.35.37.66.64.92.27.26.59.48.92.64a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.23.26.36.62.36 1s-.13.74-.36 1z"/></svg>
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.33 1.82 2 2 0 1 1-3.34 0A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82-.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-.6-1 1.65 1.65 0 0 0-1.82-.33 2 2 0 1 1 0-3.34A1.65 1.65 0 0 0 4.6 9c.23.26.36.62.36 1s-.13.74-.36 1z"/></svg>
       </button>
     </div>
   </nav>
 
   <script>
-    /* ---------- Persistência ----------- */
+    /* ---------------- Persistência ---------------- */
     const store = {
       get(k,f){ try{return JSON.parse(localStorage.getItem(k)) ?? f}catch{return f} },
       set(k,v){ localStorage.setItem(k, JSON.stringify(v)) }
     };
 
-    /* ---------- Tema & Idioma ---------- */
+    /* ---------------- Tema & Idioma ---------------- */
     const body = document.body;
     const themeToggle = document.getElementById('themeToggle');
     const themeToggleSettings = document.getElementById('themeToggleSettings');
@@ -225,7 +220,6 @@
     function setDarkMode(on){
       body.classList.toggle('dark-mode', on);
       localStorage.setItem('darkMode', on ? 'true':'false');
-      // troca ícone
       themeToggle.innerHTML = on
         ? `<svg class="icon" viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M5.64 5.64L4.22 4.22M19.78 19.78l-1.42-1.42M5.64 18.36L4.22 19.78M19.78 4.22l-1.42 1.42"/></svg>`
         : `<svg class="icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
@@ -234,7 +228,7 @@
     themeToggle.addEventListener('click',()=> setDarkMode(!body.classList.contains('dark-mode')));
     themeToggleSettings?.addEventListener('click',()=> setDarkMode(!body.classList.contains('dark-mode')));
 
-    /* ---------- Navegação ---------- */
+    /* ---------------- Navegação ---------------- */
     const screens = {
       home: document.getElementById('homeScreen'),
       routine: document.getElementById('routineScreen'),
@@ -264,7 +258,7 @@
     navButtons.navSettings.addEventListener('click',()=>showScreen('settings'));
     showScreen('home');
 
-    /* ---------- Frases ---------- */
+    /* ---------------- Frases ---------------- */
     const quotes = [
       {text:'O segredo para avançar é começar.', author:'Mark Twain'},
       {text:'Disciplina vence a motivação.', author:'—'},
@@ -274,8 +268,8 @@
     document.getElementById('quoteText').textContent = `“${q.text}”`;
     document.getElementById('quoteAuthor').textContent = `— ${q.author}`;
 
-    /* ---------- Checklist matinal ---------- */
-    const morning = store.get('morningChecklist', [
+    /* ---------------- Rotina Matinal (HOME) ---------------- */
+    let morning = store.get('morningChecklist', [
       {id:'1', label:"Beber um copo d'água", done:false},
       {id:'2', label:'Alongamento de 5 minutos', done:false},
       {id:'3', label:'Escrever no diário por 5 minutos', done:false},
@@ -285,33 +279,42 @@
     const progressFill = document.getElementById('routineProgress');
 
     function renderMorning(){
-      morningList.innerHTML='';
-      morning.forEach(item=>{
-        const li = document.createElement('li');
-        li.className = 'flex items-center justify-between gap-2 p-2 rounded hover:bg-black/5 dark:hover:bg-white/10';
-        li.innerHTML = `
+      morningList.innerHTML = morning.map(item => `
+        <li class="flex items-center justify-between gap-2 p-2 rounded hover:bg-black/5 dark:hover:bg-white/10" data-id="${item.id}">
           <label class="flex items-center gap-3 flex-1">
-            <input type="checkbox" ${item.done?'checked':''} class="h-5 w-5">
+            <input type="checkbox" ${item.done?'checked':''} class="h-5 w-5" data-action="toggle">
             <span class="${item.done?'line-through text-gray-500':''}">${item.label}</span>
           </label>
-          <button class="tappable focus-ring p-2 rounded text-red-600" title="Excluir">
+          <button class="tappable focus-ring p-2 rounded text-red-600" data-action="delete" title="Excluir">
             <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M8 6v12m8-12v12M10 6l1-2h2l1 2"/></svg>
           </button>
-        `;
-        li.querySelector('input').addEventListener('change',(e)=>{
-          item.done = e.target.checked; store.set('morningChecklist', morning); renderMorning();
-        });
-        li.querySelector('button').addEventListener('click',()=>{
-          const i = morning.findIndex(x=>x.id===item.id);
-          morning.splice(i,1); store.set('morningChecklist', morning); renderMorning();
-        });
-        morningList.appendChild(li);
-      });
+        </li>`).join('');
       const completed = morning.filter(t=>t.done).length;
       const pct = morning.length ? (completed/morning.length)*100 : 0;
       progressFill.style.width = pct + '%';
     }
     renderMorning();
+
+    // Delegation para excluir / marcar
+    morningList.addEventListener('click',(e)=>{
+      const li = e.target.closest('li'); if(!li) return;
+      const id = li.dataset.id;
+      const actionBtn = e.target.closest('[data-action]');
+      if(!actionBtn) return;
+      const action = actionBtn.dataset.action;
+
+      if(action==='toggle'){
+        const item = morning.find(x=>x.id===id);
+        item.done = !item.done;
+        store.set('morningChecklist', morning);
+        renderMorning();
+      }
+      if(action==='delete'){
+        morning = morning.filter(x=>x.id!==id);
+        store.set('morningChecklist', morning);
+        renderMorning();
+      }
+    });
 
     document.getElementById('addMorningTask').addEventListener('click',()=>{
       const name = prompt('Novo item da rotina matinal:');
@@ -321,42 +324,54 @@
       }
     });
 
-    /* ---------- Planner ---------- */
-    const planner = store.get('planner', {
+    /* ---------------- Planner (HOME) ---------------- */
+    let planner = store.get('planner', {
       morning:[{id:'m1',label:'Revisar metas diárias',done:false},{id:'m2',label:'Reunião de equipe às 10:00',done:false}],
       afternoon:[{id:'a1',label:'Trabalhar na proposta do projeto',done:false}],
       evening:[{id:'e1',label:'Planejar agenda de amanhã',done:false},{id:'e2',label:'Ler antes de dormir',done:false}]
     });
+
     const lists = {
       morning: document.getElementById('planMorning'),
       afternoon: document.getElementById('planAfternoon'),
       evening: document.getElementById('planEvening')
     };
     function renderPlan(period){
-      const ul = lists[period]; ul.innerHTML='';
-      planner[period].forEach(task=>{
-        const li = document.createElement('li');
-        li.className = 'flex items-center justify-between gap-2 p-2 rounded hover:bg-black/5 dark:hover:bg-white/10';
-        li.innerHTML = `
+      lists[period].innerHTML = planner[period].map(task=>`
+        <li class="flex items-center justify-between gap-2 p-2 rounded hover:bg-black/5 dark:hover:bg-white/10" data-id="${task.id}">
           <label class="flex items-center gap-3 flex-1">
-            <input type="checkbox" ${task.done?'checked':''} class="h-5 w-5">
+            <input type="checkbox" ${task.done?'checked':''} class="h-5 w-5" data-action="toggle">
             <span class="${task.done?'line-through text-gray-500':''}">${task.label}</span>
           </label>
-          <button class="tappable focus-ring p-2 rounded text-red-600" title="Excluir">
+          <button class="tappable focus-ring p-2 rounded text-red-600" data-action="delete" title="Excluir">
             <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M8 6v12m8-12v12M10 6l1-2h2l1 2"/></svg>
           </button>
-        `;
-        li.querySelector('input').addEventListener('change',(e)=>{
-          task.done = e.target.checked; store.set('planner', planner); renderPlan(period);
-        });
-        li.querySelector('button').addEventListener('click',()=>{
-          planner[period] = planner[period].filter(x=>x.id!==task.id);
-          store.set('planner', planner); renderPlan(period);
-        });
-        ul.appendChild(li);
-      });
+        </li>`).join('');
     }
     ['morning','afternoon','evening'].forEach(renderPlan);
+
+    // Delegation para cada UL do planner
+    Object.values(lists).forEach(ul=>{
+      ul.addEventListener('click',(e)=>{
+        const li = e.target.closest('li'); if(!li) return;
+        const id = li.dataset.id;
+        const period = ul.dataset.period;
+        const btn = e.target.closest('[data-action]'); if(!btn) return;
+        const action = btn.dataset.action;
+
+        if(action==='toggle'){
+          const item = planner[period].find(x=>x.id===id);
+          item.done = !item.done;
+          store.set('planner', planner); renderPlan(period);
+        }
+        if(action==='delete'){
+          planner[period] = planner[period].filter(x=>x.id!==id);
+          store.set('planner', planner); renderPlan(period);
+        }
+      });
+    });
+
+    // Botões de adicionar por período
     document.querySelectorAll('[data-add]').forEach(btn=>{
       btn.addEventListener('click',()=>{
         const period = btn.getAttribute('data-add');
@@ -368,8 +383,8 @@
       });
     });
 
-    /* ---------- Rotinas (tela) ---------- */
-    const routines = store.get('routines', [
+    /* ---------------- Rotinas (tela) ---------------- */
+    let routines = store.get('routines', [
       {id:'r1', name:'Rotina Matinal Básica', items:[
         {id:'r1t1',label:'Acordar às 6:00',done:false},
         {id:'r1t2',label:'Beber água',done:false},
@@ -382,59 +397,69 @@
       ]}
     ]);
     const routineList = document.getElementById('routineList');
+
     function renderRoutines(){
-      routineList.innerHTML='';
-      routines.forEach(r=>{
-        const card = document.createElement('div');
-        card.className = 'border border-gray-200 dark:border-white/10 rounded-2xl p-4';
-        card.innerHTML = `
+      routineList.innerHTML = routines.map(r=>`
+        <article class="border border-gray-200 dark:border-white/10 rounded-2xl p-4" data-rid="${r.id}">
           <div class="flex items-center justify-between mb-3">
             <h3 class="font-semibold">${r.name}</h3>
             <div class="flex gap-2">
-              <button class="tappable focus-ring px-3 py-1.5 rounded border-2 border-[color:var(--copper)] text-[color:var(--copper)]" data-add-item>+ Item</button>
-              <button class="tappable focus-ring px-3 py-1.5 rounded text-red-600 border-2 border-red-600" data-del>Excluir</button>
+              <button class="tappable focus-ring px-3 py-1.5 rounded border-2 border-[color:var(--copper)] text-[color:var(--copper)]" data-action="add-item">+ Item</button>
+              <button class="tappable focus-ring px-3 py-1.5 rounded text-red-600 border-2 border-red-600" data-action="del-routine">Excluir</button>
             </div>
           </div>
-          <ul class="space-y-2" data-list></ul>
-        `;
-        const list = card.querySelector('[data-list]');
-        r.items.forEach(it=>{
-          const li = document.createElement('li');
-          li.className = 'flex items-center justify-between gap-2 p-2 rounded hover:bg-black/5 dark:hover:bg-white/10';
-          li.innerHTML = `
-            <label class="flex items-center gap-3 flex-1">
-              <input type="checkbox" ${it.done?'checked':''} class="h-5 w-5">
-              <span class="${it.done?'line-through text-gray-500':''}">${it.label}</span>
-            </label>
-            <button class="tappable focus-ring p-2 rounded text-red-600" title="Excluir">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M8 6v12m8-12v12M10 6l1-2h2l1 2"/></svg>
-            </button>
-          `;
-          li.querySelector('input').addEventListener('change',(e)=>{
-            it.done = e.target.checked; store.set('routines', routines); renderRoutines();
-          });
-          li.querySelector('button').addEventListener('click',()=>{
-            r.items = r.items.filter(x=>x.id!==it.id); store.set('routines', routines); renderRoutines();
-          });
-          list.appendChild(li);
-        });
-
-        card.querySelector('[data-add-item]').addEventListener('click',()=>{
-          const name = prompt('Novo item da rotina:');
-          if(name && name.trim()){
-            r.items.push({id:r.id+'_'+Date.now(), label:name.trim(), done:false});
-            store.set('routines', routines); renderRoutines();
-          }
-        });
-        card.querySelector('[data-del]').addEventListener('click',()=>{
-          const idx = routines.findIndex(x=>x.id===r.id);
-          routines.splice(idx,1); store.set('routines', routines); renderRoutines();
-        });
-
-        routineList.appendChild(card);
-      });
+          <ul class="space-y-2">
+            ${r.items.map(it=>`
+              <li class="flex items-center justify-between gap-2 p-2 rounded hover:bg-black/5 dark:hover:bg-white/10" data-iid="${it.id}">
+                <label class="flex items-center gap-3 flex-1">
+                  <input type="checkbox" ${it.done?'checked':''} class="h-5 w-5" data-action="toggle-item">
+                  <span class="${it.done?'line-through text-gray-500':''}">${it.label}</span>
+                </label>
+                <button class="tappable focus-ring p-2 rounded text-red-600" data-action="del-item" title="Excluir">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M8 6v12m8-12v12M10 6l1-2h2l1 2"/></svg>
+                </button>
+              </li>`).join('')}
+          </ul>
+        </article>
+      `).join('');
     }
     renderRoutines();
+
+    // Delegation na área de rotinas
+    routineList.addEventListener('click',(e)=>{
+      const card = e.target.closest('article[data-rid]'); if(!card) return;
+      const rid = card.dataset.rid;
+      const btn = e.target.closest('[data-action]'); if(!btn) return;
+      const action = btn.dataset.action;
+
+      const r = routines.find(x=>x.id===rid);
+
+      if(action==='add-item'){
+        const name = prompt('Novo item da rotina:');
+        if(name && name.trim()){
+          r.items.push({id: rid+'_'+Date.now(), label:name.trim(), done:false});
+          store.set('routines', routines); renderRoutines();
+        }
+      }
+      if(action==='del-routine'){
+        routines = routines.filter(x=>x.id!==rid);
+        store.set('routines', routines); renderRoutines();
+      }
+      if(action==='toggle-item'){
+        const li = e.target.closest('li[data-iid]'); if(!li) return;
+        const iid = li.dataset.iid;
+        const it = r.items.find(i=>i.id===iid);
+        it.done = !it.done;
+        store.set('routines', routines); renderRoutines();
+      }
+      if(action==='del-item'){
+        const li = e.target.closest('li[data-iid]'); if(!li) return;
+        const iid = li.dataset.iid;
+        r.items = r.items.filter(i=>i.id!==iid);
+        store.set('routines', routines); renderRoutines();
+      }
+    });
+
     document.getElementById('addRoutineBtn').addEventListener('click',()=>{
       const name = prompt('Nome da nova rotina:');
       if(name && name.trim()){
@@ -443,14 +468,14 @@
       }
     });
 
-    /* ---------- Calendário ---------- */
+    /* ---------------- Calendário ---------------- */
     const monthTitle = document.getElementById('monthTitle');
     const calendarGrid = document.getElementById('calendarGrid');
     const prevMonthBtn = document.getElementById('prevMonth');
     const nextMonthBtn = document.getElementById('nextMonth');
     let current = new Date(); current.setDate(1);
 
-    const events = store.get('events', []); // {id,title,date:'YYYY-MM-DD',time}
+    let events = store.get('events', []); // {id,title,date:'YYYY-MM-DD',time}
 
     function yyyyMMdd(d){ const m=String(d.getMonth()+1).padStart(2,'0'); const day=String(d.getDate()).padStart(2,'0'); return `${d.getFullYear()}-${m}-${day}`; }
 
@@ -467,13 +492,13 @@
             <div class="font-semibold">${ev.title}</div>
             <div class="text-sm text-gray-600 dark:text-gray-300">${ev.date}${ev.time?(' • '+ev.time):''}</div>
           </div>
-          <button class="tappable focus-ring p-2 rounded text-red-600" title="Excluir">
+          <button class="tappable focus-ring p-2 rounded text-red-600" data-id="${ev.id}" title="Excluir">
             <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M8 6v12m8-12v12M10 6l1-2h2l1 2"/></svg>
           </button>
         `;
         row.querySelector('button').addEventListener('click',()=>{
-          const i = events.findIndex(e=>e.id===ev.id);
-          events.splice(i,1); store.set('events', events); renderCalendar(); renderEventsList();
+          events = events.filter(e=>e.id!==ev.id);
+          store.set('events', events); renderCalendar(); renderEventsList();
         });
         list.appendChild(row);
       });
@@ -502,11 +527,16 @@
           <div class="font-medium">${d}</div>
           ${hasEvent?'<span class="w-1.5 h-1.5 rounded-full bg-[color:var(--copper)] mt-1"></span>':''}
         `;
+        // clicar no dia preenche a data no formulário
+        cell.addEventListener('click',()=>{
+          document.getElementById('eventDate').value = iso;
+          document.getElementById('eventTitle').focus();
+        });
         calendarGrid.appendChild(cell);
       }
     }
-    prevMonthBtn.addEventListener('click',()=>{ current.setMonth(current.getMonth()-1); renderCalendar(); });
-    nextMonthBtn.addEventListener('click',()=>{ current.setMonth(current.getMonth()+1); renderCalendar(); });
+    document.getElementById('prevMonth').addEventListener('click',()=>{ current.setMonth(current.getMonth()-1); renderCalendar(); });
+    document.getElementById('nextMonth').addEventListener('click',()=>{ current.setMonth(current.getMonth()+1); renderCalendar(); });
     renderCalendar(); renderEventsList();
 
     document.getElementById('eventForm').addEventListener('submit',(e)=>{
@@ -521,7 +551,7 @@
       renderCalendar(); renderEventsList();
     });
 
-    /* ---------- Idioma (básico) ---------- */
+    /* ---------------- Idioma (básico) ---------------- */
     let currentLang='pt';
     function setLang(l){
       currentLang=l;
@@ -530,7 +560,7 @@
     langToggle.addEventListener('click',()=> setLang(currentLang==='pt'?'en':'pt'));
     langToggleSettings.addEventListener('click',()=> setLang(currentLang==='pt'?'en':'pt'));
 
-    /* ---------- Aviso de notificações (simulado, 1x) ---------- */
+    /* ---------------- Notificações (simulado, 1x) ---------------- */
     if(!localStorage.getItem('notificationRequested')){
       setTimeout(()=>{
         if(confirm('Café Matinal deseja enviar lembretes diários. Permitir?')){
